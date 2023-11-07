@@ -1,0 +1,237 @@
+
+(function ($){
+    "use strict";
+
+    const uid = localStorage.getItem('id')
+    console.log(uid)
+    
+    
+    // new setup
+    function getAuthToken() {
+        return localStorage.getItem('authToken');
+    }
+    
+    const myImg = document.getElementById('userImage')
+
+    
+    
+    //function to include authtoken
+    function includeAuthTokenInRequestHeaders() {
+        const token = getAuthToken();
+        console.log(token)
+        if (token) {
+            return {
+                'Authorization': 'Token ' + token
+            };
+        }
+        return {};
+    }
+    
+
+
+$('#imageInput').hide()
+    $('.uploadButton').on('click', function(){
+        $('#imageInput').click()
+        
+    });
+
+        $('#imageInput').on('change', function(){
+            const imageInput = document.getElementById('imageInput'); // Use document.getElementById to access the element
+    const modalImage = document.getElementById('modalImage');
+    const modal = document.getElementById('imageModal');
+    
+
+    if (imageInput.files && imageInput.files[0]){
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            modalImage.src = e.target.result;
+           // console.log(modalImage.src)
+            modal.style.display = "block";
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+        
+        $('.close').on('click', function(){
+            modal.style.display = "none";
+            
+        });
+       
+    }
+    $('#imageUpload').on('click',function() {
+     
+        
+        // Get the selected image file
+        const imageInput = document.getElementById('imageInput');
+        const selectedImage = imageInput.files[0];
+        
+        // Create a FormData object to send the image file
+        const formData = new FormData();
+        formData.append('image', selectedImage);
+        const reader = new FileReader();
+reader.onload = function(e){
+    const image = e.target.result
+    localStorage.setItem('imageData1', image );
+
+// To retrieve the image data on page load
+
+const imageData1 = localStorage.getItem('imageData')
+if(imageData1){
+    myImg.src = e.target.result
+    modal.style.display = "none";
+
+}
+
+   
+   
+        
+};
+reader.readAsDataURL(selectedImage);
+        // Send the image data in a PUT request to your server
+        $.ajax({
+            type: 'PUT',
+            url: `http://127.0.0.1:8000/api/account/profiles/${uid}/`,
+            headers: includeAuthTokenInRequestHeaders(),
+            data: formData,
+            processData: false, // Don't process the data (allows for FormData)
+            contentType: false, // Set the content type to false for FormData
+            success: function(response) {
+                console.log(response);
+                
+                // Handle the response from the server as needed
+            },
+            error: function(error) {
+                console.log({'Error': error});
+                // Handle the error, if any
+            }
+        });
+        
+    });
+   
+   
+    
+});
+
+/// GET DATA FROM DATABASE
+$.ajax( {
+    type: 'GET',
+    url: `http://127.0.0.1:8000/api/account/users/${uid}/`,
+    headers: includeAuthTokenInRequestHeaders(),
+    success: function (response){
+        console.log(response)
+        
+       myImg.setAttribute('src', response.profile.image)
+        $('#user').val(response.first_name)
+        $('#user_email').val(response.email)
+        $('#bio').val(response.profile.bio)
+        $('#first_name').val(response.first_name)
+        $('#last_name').val(response.last_name)
+        $('#phone').val(response.profile.phone)
+    },
+    error: function(e){
+        console.log({'Error': e})
+    }
+    
+
+});
+$('.userBio').on('submit', function (event){
+    event.preventDefault()
+    const bioInput = $('#bio').val()
+  
+    if(bioInput){
+        $.ajax({
+            type: 'PUT',
+            url: `http://127.0.0.1:8000/api/account/profiles/${uid}/`,
+            headers: includeAuthTokenInRequestHeaders(),
+            data: JSON.stringify({'bio':bioInput}),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                $('#bio').text(response.bio)
+
+                
+                
+                // Handle the response from the server as needed
+            },
+            error: function(error) {
+                console.log({'Error': error});
+                // Handle the error, if any
+            }
+        });
+    }
+   
+})
+
+// editing profile
+
+$('.submitProfile').on( 'click',function (event){
+    event.preventDefault()
+    
+    const phone = $('#phone').val()
+    const first_name = $('#first_name').val()
+    const last_name = $('#last_name').val()
+    const country = $('#country').val()
+    const address_line1 = $('#address_line1').val()
+    const address_line2 = $('#address_line2').val()
+    const state = $('#state').val()
+    const working_experience = $('#working_experience').val()
+    const years_of_experience = $('#years_of_experience').val()
+    const additional_details = $('#additional_details').val()
+    const postal_code = $('#postal_code').val()
+    
+    const formData = {
+        phone,
+        first_name,
+        last_name,
+        country,
+        address_line1,
+        address_line2,
+        state,
+        working_experience,
+        years_of_experience,
+        additional_details,
+        postal_code,
+    }
+    console.log(formData)
+        $.ajax({
+            type: 'PUT',
+            url: `http://127.0.0.1:8000/api/account/profiles/${uid}/`,
+            headers: includeAuthTokenInRequestHeaders(),
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                phone.val(response.phone)
+                first_name.val(response.first_name)
+                last_name.val(response.last_name)
+                country.val(response.country)
+                address_line1.val(response.address_line1)
+                address_line2.val(response.address_line2)
+                state.val(response.state)
+                working_experience.val(response.working_experience)
+                years_of_experience.val(response.years_of_experience)
+                additional_details.val(response.additional_details)
+                postal_code.val(response.postal_code)
+                
+                // Handle the response from the server as needed
+            },
+            error: function(error) {
+                console.log({'Error': error});
+                // Handle the error, if any
+            }
+        });
+    
+   
+})
+
+
+// end  of editing profile
+$('#back').on('click', function(){
+    window.location.href = 'index.html'
+})
+
+    
+
+
+
+})(jQuery);

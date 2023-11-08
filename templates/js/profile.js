@@ -119,12 +119,21 @@ $.ajax( {
         console.log(response)
         
        myImg.setAttribute('src', response.profile.image)
-        $('#user').val(response.first_name)
-        $('#user_email').val(response.email)
+        $('#user').text(response.first_name)
+        $('#user_email').text(response.email)
         $('#bio').val(response.profile.bio)
+        $('#phone').val(response.profile.phone)
         $('#first_name').val(response.first_name)
         $('#last_name').val(response.last_name)
-        $('#phone').val(response.profile.phone)
+        $('#country').val(response.profile.country)
+        $('#address_line1').val(response.profile.address_line1)
+        $('#address_line2').val(response.profile.address_line2)
+        $('#state').val(response.profile.state)
+        $('#working_experience').val(response.profile.working_experience)
+        $('#years_of_experience').val(response.profile.years_of_experience)
+        $('#additional_details').val(response.profile.additional_details)
+        $('#postal_code').val(response.profile.postal_code)
+
     },
     error: function(e){
         console.log({'Error': e})
@@ -201,17 +210,17 @@ $('.submitProfile').on( 'click',function (event){
             dataType: 'json',
             success: function(response) {
                 console.log(response);
-                phone.val(response.phone)
-                first_name.val(response.first_name)
-                last_name.val(response.last_name)
-                country.val(response.country)
-                address_line1.val(response.address_line1)
-                address_line2.val(response.address_line2)
-                state.val(response.state)
-                working_experience.val(response.working_experience)
-                years_of_experience.val(response.years_of_experience)
-                additional_details.val(response.additional_details)
-                postal_code.val(response.postal_code)
+                $('#phone').val(response.phone)
+                $('#first_name').val(response.first_name)
+                $('#last_name').val(response.last_name)
+                $('#country').val(response.country)
+                $('#address_line1').val(response.address_line1)
+                $('#address_line2').val(response.address_line2)
+                $('#state').val(response.state)
+                $('#working_experience').val(response.working_experience)
+                $('#years_of_experience').val(response.years_of_experience)
+                $('#additional_details').val(response.additional_details)
+                $('#postal_code').val(response.postal_code)
                 
                 // Handle the response from the server as needed
             },

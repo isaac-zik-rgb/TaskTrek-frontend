@@ -133,6 +133,8 @@ $.ajax( {
         $('#years_of_experience').val(response.profile.years_of_experience)
         $('#additional_details').val(response.profile.additional_details)
         $('#postal_code').val(response.profile.postal_code)
+        $('#education').val(response.profile.education)
+
 
     },
     error: function(e){
@@ -186,6 +188,7 @@ $('.submitProfile').on( 'click',function (event){
     const years_of_experience = $('#years_of_experience').val()
     const additional_details = $('#additional_details').val()
     const postal_code = $('#postal_code').val()
+    const education = $('#education').val()
     
     const formData = {
         phone,
@@ -199,6 +202,7 @@ $('.submitProfile').on( 'click',function (event){
         years_of_experience,
         additional_details,
         postal_code,
+        education,
     }
     console.log(formData)
         $.ajax({
@@ -210,6 +214,10 @@ $('.submitProfile').on( 'click',function (event){
             dataType: 'json',
             success: function(response) {
                 console.log(response);
+                $('.message').text('Profile updated successfully').css('color', 'gray')
+                setTimeout(() => {
+                    $('.message').text('')
+                }, 3000);
                 $('#phone').val(response.phone)
                 $('#first_name').val(response.first_name)
                 $('#last_name').val(response.last_name)
@@ -221,6 +229,7 @@ $('.submitProfile').on( 'click',function (event){
                 $('#years_of_experience').val(response.years_of_experience)
                 $('#additional_details').val(response.additional_details)
                 $('#postal_code').val(response.postal_code)
+                $('#education').val(response.education)
                 
                 // Handle the response from the server as needed
             },

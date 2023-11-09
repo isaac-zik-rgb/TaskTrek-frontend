@@ -9,7 +9,6 @@ const submitForm =  async (event) => {
 
     const errorMesg = document.getElementById('message');
     const data = Object.fromEntries(formData);
-    
    
 
 

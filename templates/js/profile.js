@@ -81,14 +81,13 @@ if(imageData1){
 }
 
    
-   
         
 };
 reader.readAsDataURL(selectedImage);
         // Send the image data in a PUT request to your server
         $.ajax({
             type: 'PUT',
-            url: `http://127.0.0.1:8000/api/account/profiles/${uid}/`,
+            url: `http://54.157.181.131/api/account/profiles/${uid}/`,
             headers: includeAuthTokenInRequestHeaders(),
             data: formData,
             processData: false, // Don't process the data (allows for FormData)
@@ -113,7 +112,7 @@ reader.readAsDataURL(selectedImage);
 /// GET DATA FROM DATABASE
 $.ajax( {
     type: 'GET',
-    url: `http://127.0.0.1:8000/api/account/users/${uid}/`,
+    url: `http://54.157.181.131/api/account/users/${uid}/`,
     headers: includeAuthTokenInRequestHeaders(),
     success: function (response){
         console.log(response)
@@ -150,7 +149,7 @@ $('.userBio').on('submit', function (event){
     if(bioInput){
         $.ajax({
             type: 'PUT',
-            url: `http://127.0.0.1:8000/api/account/profiles/${uid}/`,
+            url: `http://54.157.181.131/api/account/profiles/${uid}/`,
             headers: includeAuthTokenInRequestHeaders(),
             data: JSON.stringify({'bio':bioInput}),
             contentType: 'application/json',
@@ -207,7 +206,7 @@ $('.submitProfile').on( 'click',function (event){
     console.log(formData)
         $.ajax({
             type: 'PUT',
-            url: `http://127.0.0.1:8000/api/account/profiles/${uid}/`,
+            url: `http://54.157.181.131/api/account/profiles/${uid}/`,
             headers: includeAuthTokenInRequestHeaders(),
             data: JSON.stringify(formData),
             contentType: 'application/json',

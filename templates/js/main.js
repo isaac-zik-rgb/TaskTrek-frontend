@@ -88,7 +88,7 @@
           
             $.ajax({
                 type: 'GET',
-                url: 'http://127.0.0.1:8000/api/accounts/users/me/',
+                url: 'http//54.157.181.131/api//accounts/users/me/',
                 headers: includeAuthTokenInRequestHeaders(),
                 success: function(response){
                     
@@ -167,7 +167,7 @@ $('.signed').on('click', function (event) {
         // Perform logout action here
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:8000/api/accounts/logout/',
+            url: 'https://codezenith.pythonanywhere.com/api/accounts/logout/',
             headers: includeAuthTokenInRequestHeaders(), 
             success: function (response) {
                 console.log(response);

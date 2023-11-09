@@ -5,11 +5,11 @@ const formEl = document.querySelector('.registration_form');
 const submitForm =  async (event) => {
     event.preventDefault();
     const formData = new FormData(formEl);
-    const formextData = new FormData(formEl);
+    
 
     const errorMesg = document.getElementById('message');
     const data = Object.fromEntries(formData);
-    const newData = Object.fromEntries(formextData);
+    
    
 
 
@@ -33,7 +33,7 @@ const submitForm =  async (event) => {
         delete data.comfirm_password
 
         
-        const res = await fetch('http://127.0.0.1:8000/api/accounts/signup/', {
+        const res = await fetch('http//54.157.181.131/api/accounts/signup/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,12 @@ const submitForm =  async (event) => {
         });
        if (res.status !== 201){
         const response = await res.json();
-        console.log(response);
+        console.log(response, 'bad');
+        const message =  document.getElementById('message')
+        message.textContent = 'Email is alredy taken'
+        setTimeout(()=>{
+            message.textContent = ''
+        },3000)
         
        
         

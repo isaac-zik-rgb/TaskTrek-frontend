@@ -15,7 +15,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:8000/api/accounts/login/',
+            url: 'http://54.157.181.131/api/accounts/login/',
             data: JSON.stringify(loginData),
             contentType: 'application/json',
             success: function (response){

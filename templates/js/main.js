@@ -88,7 +88,7 @@
           
             $.ajax({
                 type: 'GET',
-                url: 'http//54.157.181.131/api//accounts/users/me/',
+                url: 'https://web-02.codezenith.tech/api/accounts/users/me/',
                 headers: includeAuthTokenInRequestHeaders(),
                 success: function(response){
                     

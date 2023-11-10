@@ -32,11 +32,12 @@ const submitForm =  async (event) => {
         delete data.comfirm_password
 
         
-        const res = await fetch('http//54.157.181.131/api/accounts/signup/', {
+        const res = await fetch('https://web-02.codezenith.tech/api/accounts/signup/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+           
             body: JSON.stringify(data)
         });
        if (res.status !== 201){

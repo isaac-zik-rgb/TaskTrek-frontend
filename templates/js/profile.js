@@ -68,18 +68,20 @@ $('#imageInput').hide()
         formData.append('image', selectedImage);
         const reader = new FileReader();
 reader.onload = function(e){
-    const image = e.target.result
-    localStorage.setItem('imageData1', image );
+    imageInput.src = e.target.result
+    localStorage.setItem('imageData1', e.target.result );
 
 // To retrieve the image data on page load
 
-const imageData1 = localStorage.getItem('imageData')
-if(imageData1){
-    myImg.src = e.target.result
-    modal.style.display = "none";
+const imageData1 = localStorage.getItem('imageData1')
+if(imageInput.src){
+   modal.style.display = "none";
 
 }
 
+if (imageData1){
+    imageInput.src = imageData1
+}
    
         
 };
@@ -87,7 +89,7 @@ reader.readAsDataURL(selectedImage);
         // Send the image data in a PUT request to your server
         $.ajax({
             type: 'PUT',
-            url: `http://54.157.181.131/api/account/profiles/${uid}/`,
+            url: `https://web-02.codezenith.tech/api/account/profiles/${uid}/`,
             headers: includeAuthTokenInRequestHeaders(),
             data: formData,
             processData: false, // Don't process the data (allows for FormData)
@@ -112,7 +114,7 @@ reader.readAsDataURL(selectedImage);
 /// GET DATA FROM DATABASE
 $.ajax( {
     type: 'GET',
-    url: `http://54.157.181.131/api/account/users/${uid}/`,
+    url: `https://web-02.codezenith.tech/api/account/users/${uid}/`,
     headers: includeAuthTokenInRequestHeaders(),
     success: function (response){
         console.log(response)
@@ -149,7 +151,7 @@ $('.userBio').on('submit', function (event){
     if(bioInput){
         $.ajax({
             type: 'PUT',
-            url: `http://54.157.181.131/api/account/profiles/${uid}/`,
+            url: `https://web-02.codezenith.tech/api/account/profiles/${uid}/`,
             headers: includeAuthTokenInRequestHeaders(),
             data: JSON.stringify({'bio':bioInput}),
             contentType: 'application/json',
@@ -206,7 +208,7 @@ $('.submitProfile').on( 'click',function (event){
     console.log(formData)
         $.ajax({
             type: 'PUT',
-            url: `http://54.157.181.131/api/account/profiles/${uid}/`,
+            url: `https://web-02.codezenith.tech/api/account/profiles/${uid}/`,
             headers: includeAuthTokenInRequestHeaders(),
             data: JSON.stringify(formData),
             contentType: 'application/json',

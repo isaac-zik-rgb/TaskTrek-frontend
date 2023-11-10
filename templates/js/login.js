@@ -15,7 +15,8 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://54.157.181.131/api/accounts/login/',
+            url: 'https://web-02.codezenith.tech/api/accounts/login/',
+            mode: 'no-cores',
             data: JSON.stringify(loginData),
             contentType: 'application/json',
             success: function (response){

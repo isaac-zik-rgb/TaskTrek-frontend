@@ -146,6 +146,9 @@ form .gender-details .category{
             width: 0;
         }
     }
+    #register{
+        cursor: pointer;
+    }
      #log{
         margin-top:  10px;
         display: flex;

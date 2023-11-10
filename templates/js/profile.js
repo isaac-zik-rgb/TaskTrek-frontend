@@ -116,6 +116,7 @@ $.ajax( {
     type: 'GET',
     url: `https://web-02.codezenith.tech/api/account/users/${uid}/`,
     headers: includeAuthTokenInRequestHeaders(),
+
     success: function (response){
         console.log(response)
         
@@ -126,7 +127,7 @@ $.ajax( {
         $('#phone').val(response.profile.phone)
         $('#first_name').val(response.first_name)
         $('#last_name').val(response.last_name)
-        $('#country').val(response.profile.country)
+        $('#country').text(response.profile.country)
         $('#address_line1').val(response.profile.address_line1)
         $('#address_line2').val(response.profile.address_line2)
         $('#state').val(response.profile.state)
@@ -213,6 +214,7 @@ $('.submitProfile').on( 'click',function (event){
             data: JSON.stringify(formData),
             contentType: 'application/json',
             dataType: 'json',
+            
             success: function(response) {
                 console.log(response);
                 $('.message').text('Profile updated successfully').css('color', 'gray')

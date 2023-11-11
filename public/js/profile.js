@@ -127,7 +127,7 @@ $.ajax( {
         $('#phone').val(response.profile.phone)
         $('#first_name').val(response.first_name)
         $('#last_name').val(response.last_name)
-        $('#country').text(response.profile.country)
+        $('#country').val(response.profile.country)
         $('#address_line1').val(response.profile.address_line1)
         $('#address_line2').val(response.profile.address_line2)
         $('#state').val(response.profile.state)

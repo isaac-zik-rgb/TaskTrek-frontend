@@ -76,12 +76,11 @@ reader.onload = function(e){
 const imageData1 = localStorage.getItem('imageData1')
 if(imageInput.src){
    modal.style.display = "none";
+   imageInput.src = imageData1
 
 }
 
-if (imageData1){
-    imageInput.src = imageData1
-}
+
    
         
 };
@@ -118,7 +117,9 @@ $.ajax( {
     headers: includeAuthTokenInRequestHeaders(),
 
     success: function (response){
-        console.log(response)
+        if (response.profile.image == null){
+            response.profile.image = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+        }
         
        myImg.setAttribute('src', response.profile.image)
         $('#user').text(response.first_name)
@@ -138,6 +139,11 @@ $.ajax( {
         $('#education').val(response.profile.education)
         $('#working_hours').val(response.profile.working_hours)
         $('#profession').val(response.profile.profession)
+
+
+        // skills AND CHECKBOXES
+   
+    
 
     },
     error: function(e){
@@ -179,11 +185,22 @@ $('.userBio').on('submit', function (event){
 
 $('.submitProfile').on( 'click',function (event){
     event.preventDefault()
+    
     const python = $('#python').is(':checked') ? $('#python').val() : null;
     const nodejs = $('#nodeJs').is(':checked') ? $('#nodeJs').val() : null;
     const c = $('#C').is(':checked') ? $('#C').val() : null;
     
-    const skills = [python, nodejs, c].filter(skill => skill !== null);
+    const skillss = [python, nodejs, c].filter(skill => skill !== null);
+    const skillsString = skillss.join(',');
+    const skills = skillsString
+
+    if(python){
+        $('#python').attr('checked', true)
+        $('#python').attr('disabled', true)
+    }
+
+    console.log(skillsString)
+    
 
     const phone = $('#phone').val()
     const first_name = $('#first_name').val()
@@ -199,7 +216,7 @@ $('.submitProfile').on( 'click',function (event){
     const education = $('#education').val()
     const profession = $('#profession').val()
     const working_hours = $('#working_hours').val()
-    const skill = skills
+    
     
     const formData = {
         phone,
@@ -215,7 +232,8 @@ $('.submitProfile').on( 'click',function (event){
         postal_code,
         education,
         profession,
-        skill,
+        skills,
+      
         working_hours
     }
     console.log(formData)
@@ -229,10 +247,10 @@ $('.submitProfile').on( 'click',function (event){
             
             success: function(response) {
                 console.log(response);
-                $('.message').text('Profile updated successfully').css('color', 'gray')
+                $('.message').text('Profile updated successfully').css('font-weight', '50%')
                 setTimeout(() => {
                     $('.message').text('')
-                }, 3000);
+                }, 5000);
                 $('#phone').val(response.phone)
                 $('#first_name').val(response.first_name)
                 $('#last_name').val(response.last_name)
@@ -252,9 +270,15 @@ $('.submitProfile').on( 'click',function (event){
             },
             error: function(error) {
                 console.log({'Error': error});
+                $('.message').text('Please fill all the necessary field').css('font-weight', '50%')
+                setTimeout(() => {
+                    $('.message').text('')
+                }, 5000);
                 // Handle the error, if any
             }
+
         });
+        
     
    
 })

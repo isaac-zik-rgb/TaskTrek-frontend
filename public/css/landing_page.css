@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    
     
 }
 
@@ -114,10 +114,13 @@ body {
   background-color: #13653f;
   color: white;
   font-size: medium;
+  min-height: 100vh;
+  
   
   
   font-family: 'Poppins', sans-serif;
 }
+
 
 hr {
   margin: 1rem 0;
@@ -358,6 +361,9 @@ label {
 button {
   border-radius: 0;
 }
+.showcase-text {
+  float: left;
+} 
 
 button:focus:not(:focus-visible) {
   outline: 0;

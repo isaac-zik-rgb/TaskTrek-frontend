@@ -18,13 +18,20 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/talent.css">
+    <title>TaskTek | Search talent</title>
 </head>
 <body>
     <!---Find Talent-->
     <div class="container-xxl py-5">
         <div class="container">
             <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Search for Talent</h1>
+            <div class="container1">
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Search for talent" name="q">
+                    <button type="submit"><img src="img/search_icon.png" alt="A search icon"></button>
+                </form>
+            </div>
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
                 <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                     <li class="nav-item">
@@ -43,29 +50,12 @@
                         </a>
                     </li>
                 </ul>
-                <div class="tab-content" style="max-width: 80%;">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded" src="img/isaac.jpg" alt="" style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3"><a href="">Isaac Castro</a></h5>
+                <div class="tab-content" style="max-width: 80%;" id="userContainer">
+                    
+                        <!--
+                        
+                      
 
-                                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                                        
-                                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
-                                        
-                                      
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <h6>Software Engineer</h6>
-                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Intern</small>
-                                    <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="job-item p-4 mb-4">
                             <div class="row g-4">
                                 <div class="col-sm-12 col-md-8 d-flex align-items-center">
@@ -368,7 +358,9 @@
                         </div>
                         <a class="btn btn-primary py-3 px-5" href="">Browse More Talent</a>
                     </div>
+                     -->
                 </div>
+                 
             </div>
         </div>
     </div>
@@ -381,6 +373,7 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/talent.js"></script>
 
 </body>
 </html>

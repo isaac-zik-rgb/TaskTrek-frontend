@@ -77,7 +77,29 @@
             <div class="col-md-4">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                    <div class="col-md-12"><label class="labels">Working Experience</label><input type="text" id="working_experience" class="form-control" placeholder="experience" value=""></div> <br>
+                    
+                    <!--Working time -->
+                    <label class="labels">Select Working Experience</label>
+                    <select  class="col-md-12" id="working_experience">
+                        
+                        <option selected  disabled value="">None</option>
+                   <option  class="form-control" value="Intern">Intern</option>
+                   <option  class="form-control" value="Intermidate">Intermidate</option>
+                   <option  class="form-control" value="expertise"> expertise</option>
+                </select><br><br>
+
+                   
+                    <!--profession-->
+                    <label class="labels">Profession</label>
+                    <select  class="col-md-12" id="profession">
+                        
+                        <option selected  disabled value="none">None</option>
+                   <option  class="form-control" value="software Engineer">Software Engineer</option>
+                   <option  class="form-control" value="Graphic Design">Graphic Design</option>
+                   <option  class="form-control" value="Product manager">Product Manager</option>
+                </select><br><br>
+
+                <!--end profession-->
                     <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" id="additional_details"  class="form-control" placeholder="additional details" value=""></div><br>
                     <div class="col-md-12">
                         <label class="labels">Years Of Experience</label>
@@ -89,18 +111,27 @@
                        <option  class="form-control" value="5-7">5 - 7 years</option>
                     </select>
                     </div> <br>
+                    <div class="col-md-12">
+                        <label class="labels">Select Working Hours</label>
+                        <select  class="col-md-12" id="working_hours">
+                            
+                            <option selected  disabled value="Part Time">Part Time</option>
+                       <option  class="form-control" value="Full Time">Full Time</option>
+                    </select>
+                    </div> <br>
                     <p>Resume:</p>
                     <input type="file" id="resume" accept=".pdf, .docx"><br>
                     
                 </div>
                 <div>
                     <h5>Skills:</h5>
-                    <input type="checkbox" name="python" id="python">
+                    <input type="checkbox" name="python" id="python" value="python" >
                     <label for="python">Python</label>
-                    <input type="checkbox" name="python" id="python">
-                    <label for="python">C</label>
-                    <input type="checkbox" name="python" id="python">
-                    <label for="python">Node.js</label>
+                    <input type="checkbox" name="C" id="C" value="C">
+                    <label for="Node.js">C</label>
+                    <input type="checkbox" name="nodeJs" id="nodeJs"  value="node.js">
+                    <label for="Node.js">Node.js</label>
+                   
                     
                 </div>
                 

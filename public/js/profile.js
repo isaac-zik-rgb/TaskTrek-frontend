@@ -136,7 +136,8 @@ $.ajax( {
         $('#additional_details').val(response.profile.additional_details)
         $('#postal_code').val(response.profile.postal_code)
         $('#education').val(response.profile.education)
-
+        $('#working_hours').val(response.profile.working_hours)
+        $('#profession').val(response.profile.profession)
 
     },
     error: function(e){
@@ -178,7 +179,12 @@ $('.userBio').on('submit', function (event){
 
 $('.submitProfile').on( 'click',function (event){
     event.preventDefault()
+    const python = $('#python').is(':checked') ? $('#python').val() : null;
+    const nodejs = $('#nodeJs').is(':checked') ? $('#nodeJs').val() : null;
+    const c = $('#C').is(':checked') ? $('#C').val() : null;
     
+    const skills = [python, nodejs, c].filter(skill => skill !== null);
+
     const phone = $('#phone').val()
     const first_name = $('#first_name').val()
     const last_name = $('#last_name').val()
@@ -191,6 +197,9 @@ $('.submitProfile').on( 'click',function (event){
     const additional_details = $('#additional_details').val()
     const postal_code = $('#postal_code').val()
     const education = $('#education').val()
+    const profession = $('#profession').val()
+    const working_hours = $('#working_hours').val()
+    const skill = skills
     
     const formData = {
         phone,
@@ -205,6 +214,9 @@ $('.submitProfile').on( 'click',function (event){
         additional_details,
         postal_code,
         education,
+        profession,
+        skill,
+        working_hours
     }
     console.log(formData)
         $.ajax({
@@ -233,6 +245,8 @@ $('.submitProfile').on( 'click',function (event){
                 $('#additional_details').val(response.additional_details)
                 $('#postal_code').val(response.postal_code)
                 $('#education').val(response.education)
+
+                
                 
                 // Handle the response from the server as needed
             },

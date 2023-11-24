@@ -14,7 +14,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'https://tasktrek.onrender.com/api/accounts/login/',
+            url: 'https://tasktek.onrender.com/api/accounts/login/',
             mode: 'no-cores',
             data: JSON.stringify(loginData),
             contentType: 'application/json',

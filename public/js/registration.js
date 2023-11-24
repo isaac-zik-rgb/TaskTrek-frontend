@@ -32,7 +32,7 @@ const submitForm =  async (event) => {
         delete data.comfirm_password
 
         
-        const res = await fetch('https://web-02.codezenith.tech/api/accounts/signup/', {
+        const res = await fetch('https://tasktrek.onrender.com/api/accounts/signup/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

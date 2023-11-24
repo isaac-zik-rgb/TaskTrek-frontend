@@ -1,4 +1,3 @@
-
 $(function () {
     $('.login-form').submit(function (event) {
         event.preventDefault();
@@ -15,7 +14,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'https://web-02.codezenith.tech/api/accounts/login/',
+            url: 'https://tasktrek.onrender.com/api/accounts/login/',
             mode: 'no-cores',
             data: JSON.stringify(loginData),
             contentType: 'application/json',

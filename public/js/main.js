@@ -88,7 +88,7 @@
           
             $.ajax({
                 type: 'GET',
-                url: 'https://web-02.codezenith.tech/api/accounts/users/me/',
+                url: 'https://tasktrek.onrender.com/api/accounts/users/me/',
                 headers: includeAuthTokenInRequestHeaders(),
                 success: function(response){
                     
@@ -167,7 +167,7 @@ $('.signed').on('click', function (event) {
         // Perform logout action here
         $.ajax({
             type: 'GET',
-            url: 'https://codezenith.pythonanywhere.com/api/accounts/logout/',
+            url: 'https://tasktrek.onrender.com/api/accounts/logout/',
             headers: includeAuthTokenInRequestHeaders(), 
             success: function (response) {
                 console.log(response);

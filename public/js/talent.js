@@ -5,7 +5,7 @@
    
     // Fetch data from the database using AJAX
     $.ajax({
-        url: 'https://web-02.codezenith.tech/api/account/users/', // Replace with your actual API endpoint
+        url: 'https://tasktrek.onrender.com/api/account/users/', // Replace with your actual API endpoint
         method: 'GET',
         success: function(data) {
            
